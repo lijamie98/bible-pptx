@@ -3,7 +3,7 @@ import os
 from bible_book_list import *
 import urllib
 
-from scripts import BIBLE_HTML_PATH
+from bible import BIBLE_HTML_PATH
 
 url_format = 'http://www.ccreadbible.org/Chinese%20Bible/sigao/{0}_bible_Ch_{1}_.html'
 file_format = '{0}_bible_Ch_{1}_.html'

@@ -1,9 +1,9 @@
 import re
 import os
 
-from scripts import BIBLE_HTML_PATH
-from scripts.bible_book_list import *
-from scripts import BIBLE_CSV_PATH
+from bible import BIBLE_HTML_PATH
+from bible.bible_book_list import *
+from bible import BIBLE_CSV_PATH
 
 file_format = '{0}_bible_Ch_{1}_.html'
 

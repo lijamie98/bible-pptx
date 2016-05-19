@@ -3,10 +3,10 @@ import argparse
 import csv
 import os
 
-from bible_book_list import *
 from pptx import Presentation
 
-from scripts import BIBLE_CSV_PATH, BIBLE_PPTX_PATH, BIBLE_PPTX_TEMPLATE_PATH
+from bible import BIBLE_CSV_PATH, BIBLE_PPTX_PATH, BIBLE_PPTX_TEMPLATE_PATH
+from bible.bible_book_list import new_testiment_book_list, old_testiment_book_list
 
 __theme__ = 'simple'
 
