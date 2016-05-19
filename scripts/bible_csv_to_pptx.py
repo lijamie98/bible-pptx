@@ -43,7 +43,7 @@ def parse_csv_file(book_name, book_title, chapter):
             subtitle.text = row[3]
             # print "{0} {1}:{2} {3}".format(row[0], row[1], row[2], row[3])
 
-    print "saving {0}".format(pptx_file_name)
+    print "Creating {0}".format(pptx_file_name)
     prs.save(pptx_file_name)
 
 
@@ -54,16 +54,17 @@ def parse_csv_files(book_list):
 
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser()
-    parser.add_argument("theme", help="The pptx template theme. ")
+    parser.add_argument("--theme", help="The pptx template theme. ")
     args = parser.parse_args()
-    print args.theme
-    exit()
 
-    __theme__ = 'simple'
+    if args.theme is None:
+        __theme__ = 'simple'
+    else:
+        __theme__ = args.theme
 
     theme_path = os.path.join(BIBLE_PPTX_PATH, __theme__)
+
     if not os.path.isdir(theme_path):
         os.makedirs(theme_path)
 
