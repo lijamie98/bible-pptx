@@ -10,6 +10,8 @@ from bible.bible_book_list import new_testiment_book_list, old_testiment_book_li
 
 __theme__ = 'simple'
 
+max_verse = -1
+
 
 def get_csv_file_name(book, chapter):
     return os.path.join(BIBLE_CSV_PATH, '{0}_{1}.csv'.format(book, chapter))
@@ -26,16 +28,24 @@ def parse_csv_file(book_name, book_title, chapter):
     prs = Presentation(os.path.join(BIBLE_PPTX_TEMPLATE_PATH, 'template-{0}.pptx'.format(__theme__)))
 
     title_slide_layout_large = prs.slide_layouts[0]
-    title_slide_layout_small = prs.slide_layouts[1]
+    title_slide_layout_medium = prs.slide_layouts[1]
+    title_slide_layout_small = prs.slide_layouts[2]
+    title_slide_layout_extra_small = prs.slide_layouts[3]
 
     with open(csv_file_name) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
             verse_content = row[3]
-            if len(verse_content) > 150:
-                slide = prs.slides.add_slide(title_slide_layout_small)
-            else:
+
+            if len(verse_content) <= 150:  # 10 x 5
                 slide = prs.slides.add_slide(title_slide_layout_large)
+            elif len(verse_content) <= 216:  # 72 = 12 x 6
+                slide = prs.slides.add_slide(title_slide_layout_medium)
+            elif len(verse_content) <= 360:  # 72 = 15 x 8
+                slide = prs.slides.add_slide(title_slide_layout_small)
+            else:  # 18 x 10
+                slide = prs.slides.add_slide(title_slide_layout_extra_small)
+
             title = slide.shapes.title
             subtitle = slide.placeholders[1]
 
