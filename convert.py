@@ -18,7 +18,7 @@ def get_csv_file_name(book, chapter):
 
 
 def get_pptx_file_name(book, chapter):
-    return os.path.join(BIBLE_PPTX_PATH, __theme__, '{0}_{1}.pptx'.format(book, chapter))
+    return os.path.join(BIBLE_PPTX_PATH, __theme__, '{0}_{1:0>2d}.pptx'.format(book, chapter))
 
 
 def parse_csv_file(book_name, book_title, chapter):
