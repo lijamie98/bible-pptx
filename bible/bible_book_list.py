@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 test_list = [
-    {'name': 'Matthew', 'chapters': 28, 'title': u''}
+    {'name': 'Zechariah', 'chapters': 14, 'title': u'匝加利亞 Zechariah'}
 ]
 
 new_testiment_book_list = [
@@ -71,6 +71,7 @@ old_testiment_book_list = [
     {'name': 'Habakkuk', 'chapters': 3, 'title': u'哈巴谷 Habakkuk'},
     {'name': 'Zephaniah', 'chapters': 3, 'title': u'索福尼亞 Zephaniah'},
     {'name': 'Haggai', 'chapters': 2, 'title': u'哈蓋 Haggai'},
+    {'name': 'Zechariah', 'chapters': 14, 'title': u'匝加利亞 Zechariah'},
     {'name': 'Malachi', 'chapters': 3, 'title': u'瑪拉基亞 Malachi'},
     # Extra 7 books
     {'name': 'Wisdom', 'chapters': 19, 'title': u'智慧篇 Wisdom'},
