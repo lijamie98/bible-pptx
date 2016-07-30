@@ -25,7 +25,7 @@ def parse_csv_file(book_name, book_title, chapter):
     csv_file_name = get_csv_file_name(book_name, chapter)
     pptx_file_name = get_pptx_file_name(book_name, chapter)
 
-    prs = Presentation(os.path.join(BIBLE_PPTX_TEMPLATE_PATH, 'template-{0}.pptx'.format(__theme__)))
+    prs = Presentation(os.path.join(BIBLE_PPTX_TEMPLATE_PATH, '{0}.pptx'.format(__theme__)))
 
     title_slide_layout_large = prs.slide_layouts[0]
     title_slide_layout_medium = prs.slide_layouts[1]

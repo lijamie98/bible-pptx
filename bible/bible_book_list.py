@@ -56,7 +56,7 @@ old_testiment_book_list = [
     {'name': 'Proverbs', 'chapters': 31, 'title': u'箴言 Proverbs'},
     {'name': 'Ecclesiastes', 'chapters': 12, 'title': u'訓道篇 Ecclesiastes'},
     {'name': 'Song_of_Songs', 'chapters': 8, 'title': u'雅歌 Song of Songs'},
-    {'name': 'Isaiah', 'chapters': 66, 'title': u'依撒意亞 Issiah'},
+    {'name': 'Isaiah', 'chapters': 66, 'title': u'依撒意亞 Isaiah'},
     {'name': 'Jeremiah', 'chapters': 52, 'title': u'耶肋米亞 Jeremiah'},
     {'name': 'Lamentations', 'chapters': 5, 'title': u'哀歌 Lamentations'},
     {'name': 'Ezekiel', 'chapters': 48, 'title': u'厄則克爾 Ezekiel'},
