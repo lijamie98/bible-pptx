@@ -59,7 +59,7 @@ old_testiment_book_list = [
     {'name': 'Isaiah', 'chapters': 66, 'title': u'依撒意亞 Isaiah'},
     {'name': 'Jeremiah', 'chapters': 52, 'title': u'耶肋米亞 Jeremiah'},
     {'name': 'Lamentations', 'chapters': 5, 'title': u'哀歌 Lamentations'},
-    {'name': 'Ezekiel', 'chapters': 48, 'title': u'厄則克爾 Ezekiel'},
+    {'name': 'Ezekiel', 'chapters': 48, 'title': u'厄則克耳 Ezekiel'},
     {'name': 'Daniel', 'chapters': 14, 'title': u'達尼爾 Daniel'},
     {'name': 'Hosea', 'chapters': 14, 'title': u'甌瑟亞 Hosea'},
     {'name': 'Joel', 'chapters': 4, 'title': u'岳厄爾 Joel'},
