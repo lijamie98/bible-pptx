@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import argparse
 import csv
+import glob
 import os
 
 from pptx import Presentation
@@ -9,6 +10,9 @@ from bible import BIBLE_CSV_PATH, BIBLE_PPTX_PATH, BIBLE_PPTX_TEMPLATE_PATH
 from bible.bible_book_list import new_testiment_book_list, old_testiment_book_list
 
 __theme__ = 'simple'
+
+# Default force_update mode to False.
+__force_update__ = False
 
 max_verse = -1
 
@@ -21,9 +25,29 @@ def get_pptx_file_name(book, chapter):
     return os.path.join(BIBLE_PPTX_PATH, __theme__, '{0}_{1:0>2d}.pptx'.format(book, chapter))
 
 
+def to_be_updated(csv_file_name, pptx_file_name):
+    if __force_update__:
+        return True
+
+    if not os.path.exists(pptx_file_name):
+        return True
+
+    pptx_time = os.path.getmtime(pptx_file_name)
+    csv_time = os.path.getmtime(csv_file_name)
+
+    if csv_time > pptx_time:
+        return True
+
+    return False
+
+
 def parse_csv_file(book_name, book_title, chapter):
     csv_file_name = get_csv_file_name(book_name, chapter)
     pptx_file_name = get_pptx_file_name(book_name, chapter)
+
+    if not to_be_updated(csv_file_name, pptx_file_name):
+        # Skip
+        return
 
     prs = Presentation(os.path.join(BIBLE_PPTX_TEMPLATE_PATH, '{0}.pptx'.format(__theme__)))
 
@@ -63,16 +87,7 @@ def parse_csv_files(book_list):
             parse_csv_file(book['name'], book['title'], chapter)
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--theme", help="The pptx template theme. ")
-    args = parser.parse_args()
-
-    if args.theme is None:
-        __theme__ = 'simple'
-    else:
-        __theme__ = args.theme
-
+def convert():
     theme_path = os.path.join(BIBLE_PPTX_PATH, __theme__)
 
     if not os.path.isdir(theme_path):
@@ -80,3 +95,32 @@ if __name__ == "__main__":
 
     parse_csv_files(new_testiment_book_list)
     parse_csv_files(old_testiment_book_list)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--theme", help="The pptx template theme. ")
+    parser.add_argument("--force", help="Force update all PPTX files.", nargs='*')
+    args = parser.parse_args()
+
+    if args.theme is None:
+        __all__ = True
+    else:
+        __all__ = False
+        __theme__ = args.theme
+
+    if args.force is None:
+        __force_update__ = False
+    else:
+        __force_update__ = True
+
+    print "Theme={0}".format(__theme__)
+    print "Force Update={0}".format(__force_update__)
+
+    if __all__:
+        for theme_file in os.listdir(BIBLE_PPTX_TEMPLATE_PATH):
+            if theme_file.endswith(".pptx"):
+                __theme__ = theme_file[0:-5]
+                convert()
+    else:
+        convert()
