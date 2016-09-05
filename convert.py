@@ -114,9 +114,6 @@ if __name__ == "__main__":
     else:
         __force_update__ = True
 
-    print "Theme={0}".format(__theme__)
-    print "Force Update={0}".format(__force_update__)
-
     if __all__:
         for theme_file in os.listdir(BIBLE_PPTX_TEMPLATE_PATH):
             if theme_file.endswith(".pptx"):
