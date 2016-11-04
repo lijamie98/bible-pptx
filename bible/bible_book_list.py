@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 test_list = [
     {'name': 'Zechariah', 'chapters': 14, 'title': u'匝加利亞 Zechariah'}
 ]
@@ -37,17 +37,17 @@ old_testiment_book_list = [
     {'name': 'Genesis', 'chapters': 50, 'title': u'創世紀 Genesis'},
     {'name': 'Exodus', 'chapters': 40, 'title': u'出谷紀 Exodus'},
     {'name': 'Leviticus', 'chapters': 27, 'title': u'肋未紀 Levitcus'},
-    {'name': 'Numbers', 'chapters': 36, 'title': u'戶籍紀 Number'},
+    {'name': 'Numbers', 'chapters': 36, 'title': u'戶籍紀 Numbers'},
     {'name': 'Deuteronomy', 'chapters': 34, 'title': u'申命紀 Deuteronomy'},
     {'name': 'Joshua', 'chapters': 24, 'title': u'若蘇厄書 Joshua'},
     {'name': 'Judges', 'chapters': 21, 'title': u'民長紀 Judges'},
     {'name': 'Ruth', 'chapters': 4, 'title': u'盧德紀 Ruth'},
     {'name': '1_Samuel', 'chapters': 31, 'title': u'撒慕爾紀上 1 Samuel'},
-    {'name': '2_Samuel', 'chapters': 24, 'title': u'撒慕爾記下 2 Samuel'},
+    {'name': '2_Samuel', 'chapters': 24, 'title': u'撒慕爾紀下 2 Samuel'},
     {'name': '1_Kings', 'chapters': 22, 'title': u'列王紀上 1 Kings'},
     {'name': '2_Kings', 'chapters': 25, 'title': u'列王紀下 2 Kings'},
     {'name': '1_Chronicles', 'chapters': 29, 'title': u'編年紀上 1 Chronicles'},
-    {'name': '2_Chronicles', 'chapters': 36, 'title': u'編年記下 2 Chronicles'},
+    {'name': '2_Chronicles', 'chapters': 36, 'title': u'編年紀下 2 Chronicles'},
     {'name': 'Ezra', 'chapters': 10, 'title': u'厄斯德拉上 Ezra'},
     {'name': 'Nehemiah', 'chapters': 13, 'title': u'厄斯德拉下 Nehemiah'},
     {'name': 'Esther', 'chapters': 10, 'title': u'艾斯德爾傳 Esther'},
@@ -61,7 +61,7 @@ old_testiment_book_list = [
     {'name': 'Lamentations', 'chapters': 5, 'title': u'哀歌 Lamentations'},
     {'name': 'Ezekiel', 'chapters': 48, 'title': u'厄則克耳 Ezekiel'},
     {'name': 'Daniel', 'chapters': 14, 'title': u'達尼爾 Daniel'},
-    {'name': 'Hosea', 'chapters': 14, 'title': u'甌瑟亞 Hosea'},
+    {'name': 'Hosea', 'chapters': 14, 'title': u'歐瑟亞 Hosea'},
     {'name': 'Joel', 'chapters': 4, 'title': u'岳厄爾 Joel'},
     {'name': 'Amos', 'chapters': 9, 'title': u'亞毛斯 Amos'},
     {'name': 'Obadiah', 'chapters': 1, 'title': u'亞北底亞 Obadiah'},
