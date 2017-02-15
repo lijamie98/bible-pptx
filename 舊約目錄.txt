@@ -1,0 +1,46 @@
+﻿創世紀 Genesis
+出谷紀 Exodus
+肋未紀 Levitcus
+戶籍紀 Number
+申命紀 Deuteronomy
+若蘇厄書 Joshua
+民長紀 Judges
+盧德傳 Ruth
+撒慕爾紀上 1 Samuel
+撒慕爾記下 2 Samuel
+列王紀上 1 Kings
+列王紀下 2 Kings
+編年紀上 1 Chronicles
+編年紀下 2 Chronicles
+厄斯德拉上 Ezra
+厄斯德拉下 Nehemiah
+多俾亞傳 Tobit
+友弟德傳 Judith
+艾斯德爾傳 Esther
+瑪加伯上 1 Maccabees
+瑪加伯下 2 Maccabees
+約伯傳 Job
+聖詠集 Psalms
+箴言 Proverbs
+訓道篇 Ecclesiastes
+雅歌 Song of Songs
+智慧篇 Wisdom
+德訓篇 Sirach
+依撒意亞 Isaiah
+耶肋米亞 Jeremiah
+耶肋米亞哀歌 Lamentations
+巴路克 Baruth
+厄則克耳 Ezekiel
+達尼爾 Daniel
+甌瑟亞 Hosea
+岳厄爾 Joel
+亞毛斯 Amos
+亞北底亞 Obadiah
+約納 Jonah
+米該亞 Micah
+納鴻 Nahum
+哈巴谷 Habakkuk
+索福尼亞 Zephaniah
+哈蓋 Haggai
+匝加利亞 Zechariah
+瑪拉基亞 Malachi
