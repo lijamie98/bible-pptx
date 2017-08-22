@@ -141,4 +141,6 @@ $RECYCLE.BIN/
 # App specifics
 data/html
 data/pptx
+data/pptx_cut
+data/pptx.zip
 .idea
