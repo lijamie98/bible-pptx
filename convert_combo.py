@@ -67,7 +67,7 @@ def parse_csv_file(book, chapter):
             sk_book_title = slide.placeholders[11]
             cu_book_title = slide.placeholders[12]
 
-            title.text = u'[{1}:{2}]'.format(book['name'], chapter, verse)
+            title.text = u'{0} [{1}:{2}]'.format(book['title'], chapter, verse)
             sk_verse_content.text = verse_content
             cu_verse_content.text = verse_cu
             sk_book_title.text = book['sk_title']
