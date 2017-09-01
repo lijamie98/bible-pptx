@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import argparse
 import csv
-import glob
 import os
 
 from pptx import Presentation
