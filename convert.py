@@ -83,7 +83,7 @@ def parse_csv_file(book_name, book_title, chapter):
 def parse_csv_files(book_list):
     for book in book_list:
         for chapter in range(1, book['chapters'] + 1):
-            parse_csv_file(book['name'], book['title'], chapter)
+            parse_csv_file(book['name'], book['sk_title'] + " " + book['title'], chapter)
 
 
 def convert():
