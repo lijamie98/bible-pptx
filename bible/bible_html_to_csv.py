@@ -3,7 +3,7 @@ import os
 
 from bible import BIBLE_HTML_PATH
 from bible.bible_book_list import *
-from bible import BIBLE_CSV_PATH
+from bible import BIBLE_CSV_PATH_TRADITIONAL
 
 file_format = '{0}_bible_Ch_{1}_.html'
 
@@ -13,7 +13,7 @@ def get_html_file(html_path, book, chapter):
 
 
 def get_csv_file(book, chapter):
-    return os.path.join(BIBLE_CSV_PATH, '{0}_{1}.csv'.format(book, chapter))
+    return os.path.join(BIBLE_CSV_PATH_TRADITIONAL, '{0}_{1}.csv'.format(book, chapter))
 
 
 def parse_file(book_name, chapter, html_file, csv_file):

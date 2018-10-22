@@ -5,7 +5,7 @@ import os
 
 from pptx import Presentation
 
-from bible import BIBLE_CSV_PATH, BIBLE_PPTX_PATH, BIBLE_PPTX_TEMPLATE_PATH, BIBLE_DATABASE_PATH, BIBLE_COMBO_PPTX_PATH, \
+from bible import BIBLE_CSV_PATH_TRADITIONAL, BIBLE_PPTX_PATH_TRADITIONAL, BIBLE_PPTX_TEMPLATE_PATH_TRADITIONAL, BIBLE_DATABASE_PATH, BIBLE_COMBO_PPTX_PATH, \
     BIBLE_COMBO_PPTX_TEMPLATE_PATH
 from bible.bible_book_list import new_testiment_book_list, old_testiment_book_list
 
