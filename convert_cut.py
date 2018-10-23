@@ -12,7 +12,7 @@ BIBLE_SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 BIBLE_HOME = BIBLE_SCRIPT_PATH
 BIBLE_DATABASE_PATH = os.path.abspath(os.path.join(BIBLE_HOME, "data", "text"))
 BIBLE_PPTX_PATH = os.path.abspath(os.path.join(BIBLE_HOME, "data", "pptx_cut"))
-BIBLE_PPTX_TEMPLATE_PATH = os.path.abspath(os.path.join(BIBLE_HOME, "data", "templates"))
+BIBLE_PPTX_TEMPLATE_PATH = os.path.abspath(os.path.join(BIBLE_HOME, "data", "templates", "traditional"))
 
 if not os.path.isdir(BIBLE_PPTX_PATH):
     os.makedirs(BIBLE_PPTX_PATH)

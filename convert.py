@@ -5,62 +5,18 @@ import os
 
 from pptx import Presentation
 
-from bible import BIBLE_CSV_PATH_TRADITIONAL, BIBLE_PPTX_PATH_TRADITIONAL, BIBLE_PPTX_TEMPLATE_PATH_TRADITIONAL, \
-    BIBLE_CSV_PATH_SIMPLIFIED, BIBLE_PPTX_PATH_SIMPLIFIED, BIBLE_PPTX_TEMPLATE_PATH_SIMPLIFIED
-from bible.bible_book_list import new_testiment_book_list, old_testiment_book_list
-
-__theme__ = 'simple'
-
-# Default force_update mode to False.
-__force_update__ = False
-
-max_verse = -1
-
-# current_csv_path = BIBLE_CSV_PATH_TRADITIONAL
-# current_pptx_path = BIBLE_PPTX_PATH_TRADITIONAL
-# current_template_path = BIBLE_PPTX_TEMPLATE_PATH_TRADITIONAL
+from bible import TraditionalBibleContext, SimplifiedBibleContext
 
 
-def get_csv_file_name(book, chapter):
-    return os.path.join(current_csv_path, '{0}_{1}.csv'.format(book, chapter))
+def parse_csv_file(_bc, book_name, book_title, chapter):
+    csv_file_name = _bc.get_csv_file_name(book_name, chapter)
+    pptx_file_name = _bc.get_pptx_file_name(book_name, chapter)
 
-
-def get_pptx_file_name(book, chapter):
-    return os.path.join(current_pptx_path, __theme__, '{0}_{1:0>2d}.pptx'.format(book, chapter))
-
-
-def to_be_updated(csv_file_name, pptx_file_name):
-    if __force_update__:
-        return True
-
-    if not os.path.exists(pptx_file_name):
-        return True
-
-    pptx_time = os.path.getmtime(pptx_file_name)
-    csv_time = os.path.getmtime(csv_file_name)
-
-    if csv_time > pptx_time:
-        return True
-
-    if current_template_time > pptx_time:
-        return True
-
-    return False
-
-
-def get_template_pptx():
-    return os.path.join(current_template_path, '{0}.pptx'.format(__theme__))
-
-
-def parse_csv_file(book_name, book_title, chapter):
-    csv_file_name = get_csv_file_name(book_name, chapter)
-    pptx_file_name = get_pptx_file_name(book_name, chapter)
-
-    if not to_be_updated(csv_file_name, pptx_file_name):
+    if not _bc.to_be_updated(csv_file_name, pptx_file_name):
         # Skip
         return
 
-    prs = Presentation(get_template_pptx())
+    prs = Presentation(_bc.get_template_pptx())
 
     title_slide_layout_large = prs.slide_layouts[0]
     title_slide_layout_medium = prs.slide_layouts[1]
@@ -92,27 +48,19 @@ def parse_csv_file(book_name, book_title, chapter):
     prs.save(pptx_file_name)
 
 
-def parse_csv_files(book_list):
+def parse_csv_files(_bc, book_list):
     for book in book_list:
         for chapter in range(1, book['chapters'] + 1):
-            parse_csv_file(book['name'], book['sk_title'] + " " + book['title'], chapter)
+            parse_csv_file(_bc, book['name'], book['sk_title'] + " " + book['title'], chapter)
 
 
-def convert(csv_path, pptx_path, template_path):
-    global current_pptx_path, current_csv_path, current_template_path, current_template_time
-    theme_path = os.path.join(pptx_path, __theme__)
+def convert(_bc):
+    for template_file in os.listdir(_bc.template_path):
+        if template_file.endswith(".pptx"):
+            _bc.set_theme(template_file[0:-5])
 
-    if not os.path.isdir(theme_path):
-        os.makedirs(theme_path)
-
-    # convert traditional Chinese
-    current_csv_path = csv_path
-    current_pptx_path = pptx_path
-    current_template_path = template_path
-    current_template_time = os.path.getmtime(get_template_pptx())
-
-    parse_csv_files(new_testiment_book_list)
-    parse_csv_files(old_testiment_book_list)
+            parse_csv_files(_bc, _bc.new_testiment_book_list)
+            parse_csv_files(_bc, _bc.old_testiment_book_list)
 
 
 if __name__ == "__main__":
@@ -133,13 +81,14 @@ if __name__ == "__main__":
         __force_update__ = True
 
     if __all__:
-        for theme_file in os.listdir(BIBLE_PPTX_TEMPLATE_PATH_TRADITIONAL):
-            if theme_file.endswith(".pptx"):
-                __theme__ = theme_file[0:-5]
-                convert(BIBLE_CSV_PATH_TRADITIONAL, BIBLE_PPTX_PATH_TRADITIONAL, BIBLE_PPTX_TEMPLATE_PATH_TRADITIONAL)
-        for theme_file in os.listdir(BIBLE_PPTX_TEMPLATE_PATH_SIMPLIFIED):
-            if theme_file.endswith(".pptx"):
-                __theme__ = theme_file[0:-5]
-                convert(BIBLE_CSV_PATH_SIMPLIFIED, BIBLE_PPTX_PATH_SIMPLIFIED, BIBLE_PPTX_TEMPLATE_PATH_SIMPLIFIED)
+        bible_context = TraditionalBibleContext()
+        bible_context.force_update = __force_update__
+        convert(bible_context)
+
+        bible_context = SimplifiedBibleContext()
+        bible_context.force_update = __force_update__
+        convert(bible_context)
+
     else:
-        convert(BIBLE_CSV_PATH_TRADITIONAL, BIBLE_PPTX_PATH_TRADITIONAL, BIBLE_PPTX_TEMPLATE_PATH_TRADITIONAL)
+        pass
+        # convert(BIBLE_CSV_PATH_TRADITIONAL, BIBLE_PPTX_PATH_TRADITIONAL, BIBLE_PPTX_TEMPLATE_PATH_TRADITIONAL)

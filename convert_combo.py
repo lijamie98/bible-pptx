@@ -5,11 +5,10 @@ import os
 
 from pptx import Presentation
 
-from bible import BIBLE_CSV_PATH_TRADITIONAL, BIBLE_PPTX_PATH_TRADITIONAL, BIBLE_PPTX_TEMPLATE_PATH_TRADITIONAL, BIBLE_DATABASE_PATH, BIBLE_COMBO_PPTX_PATH, \
+from bible import BIBLE_CSV_PATH_TRADITIONAL, BIBLE_PPTX_PATH_TRADITIONAL, BIBLE_PPTX_TEMPLATE_PATH_TRADITIONAL, \
+    BIBLE_DATABASE_PATH, BIBLE_COMBO_PPTX_PATH, \
     BIBLE_COMBO_PPTX_TEMPLATE_PATH
-from bible.bible_book_list import new_testiment_book_list, old_testiment_book_list
-
-from convert import get_csv_file_name, get_pptx_file_name, to_be_updated
+from bible.bible_book_list import new_testiment_book_list_traditional, old_testiment_book_list_traditional
 
 __theme__ = 'simple'
 
@@ -90,8 +89,8 @@ def convert():
     if not os.path.isdir(theme_path):
         os.makedirs(theme_path)
 
-    parse_csv_files(new_testiment_book_list)
-    parse_csv_files(old_testiment_book_list)
+    parse_csv_files(new_testiment_book_list_traditional)
+    parse_csv_files(old_testiment_book_list_traditional)
 
 
 def get_db_file_name():
