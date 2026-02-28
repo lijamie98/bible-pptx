@@ -44,7 +44,7 @@ def parse_csv_file(_bc, book_name, book_title, chapter):
             subtitle.text = row[3]
             # print "{0} {1}:{2} {3}".format(row[0], row[1], row[2], row[3])
 
-    print "Creating {0}".format(pptx_file_name)
+    print("Creating {0}".format(pptx_file_name))
     prs.save(pptx_file_name)
 
 
@@ -54,13 +54,17 @@ def parse_csv_files(_bc, book_list):
             parse_csv_file(_bc, book['name'], book['sk_title'] + " " + book['title'], chapter)
 
 
-def convert(_bc):
+def convert(_bc, theme_filter=None):
     for template_file in os.listdir(_bc.template_path):
-        if template_file.endswith(".pptx"):
-            _bc.set_theme(template_file[0:-5])
+        if not template_file.endswith(".pptx"):
+            continue
+        theme_name = template_file[0:-5]
+        if theme_filter and theme_name != theme_filter and not theme_name.startswith(theme_filter + "-"):
+            continue
+        _bc.set_theme(theme_name)
 
-            parse_csv_files(_bc, _bc.new_testiment_book_list)
-            parse_csv_files(_bc, _bc.old_testiment_book_list)
+        parse_csv_files(_bc, _bc.new_testiment_book_list)
+        parse_csv_files(_bc, _bc.old_testiment_book_list)
 
 
 if __name__ == "__main__":
@@ -90,5 +94,10 @@ if __name__ == "__main__":
         convert(bible_context)
 
     else:
-        pass
-        # convert(BIBLE_CSV_PATH_TRADITIONAL, BIBLE_PPTX_PATH_TRADITIONAL, BIBLE_PPTX_TEMPLATE_PATH_TRADITIONAL)
+        bible_context = TraditionalBibleContext()
+        bible_context.force_update = __force_update__
+        convert(bible_context, theme_filter=__theme__)
+
+        bible_context = SimplifiedBibleContext()
+        bible_context.force_update = __force_update__
+        convert(bible_context, theme_filter=__theme__)

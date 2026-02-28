@@ -1,5 +1,5 @@
 import os
-import bible_book_list
+from . import bible_book_list
 
 BIBLE_SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 BIBLE_HOME = os.path.abspath(os.path.join(BIBLE_SCRIPT_PATH, os.pardir))

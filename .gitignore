@@ -78,6 +78,7 @@ celerybeat-schedule
 .env
 
 # virtualenv
+.venv/
 venv/
 ENV/
 
@@ -144,5 +145,7 @@ data/pptx
 data/pptx_cut
 data/pptx.zip
 data/pptx_combo
+*.pptx
 .idea
 .idea/*
+.vscode/

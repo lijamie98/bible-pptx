@@ -1,11 +1,12 @@
 import os
 
-from bible_book_list import *
-import urllib
+from .bible_book_list import *
+from urllib.request import urlretrieve
+from urllib.error import HTTPError
 
 from bible import BIBLE_HTML_PATH
 
-url_format = 'http://www.ccreadbible.org/Chinese%20Bible/sigao/{0}_bible_Ch_{1}_.html'
+url_format = 'https://www.ccreadbible.org/chinesebible/sigao/{0}_bible_Ch_{1}_.html'
 file_format = '{0}_bible_Ch_{1}_.html'
 
 
@@ -25,10 +26,13 @@ def download_book_list(book_list, folder):
             url = get_download_url(book['name'], chapter)
             file_name = get_file_name(folder, book['name'], chapter)
             if not os.path.exists(file_name):
-                print 'downloading from {0} to {1}...'.format(url, file_name)
-                urllib.urlretrieve(url, file_name)
+                print('downloading from {0} to {1}...'.format(url, file_name))
+                try:
+                    urlretrieve(url, file_name)
+                except HTTPError as e:
+                    print('  -> failed: HTTP {0}'.format(e.code))
 
 
 if __name__ == "__main__":
-    download_book_list(new_testiment_book_list, os.path.join(BIBLE_HTML_PATH, 'New_Testament'))
-    download_book_list(old_testiment_book_list, os.path.join(BIBLE_HTML_PATH, 'Old_Testament'))
+    download_book_list(new_testiment_book_list_traditional, os.path.join(BIBLE_HTML_PATH, 'New_Testament'))
+    download_book_list(old_testiment_book_list_traditional, os.path.join(BIBLE_HTML_PATH, 'Old_Testament'))
